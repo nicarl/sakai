@@ -1,89 +1,71 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <parent>
-        <groupId>org.sakaiproject</groupId>
-        <artifactId>master</artifactId>
-        <version>24-SNAPSHOT</version>
-        <relativePath>../master/pom.xml</relativePath>
-    </parent>
-
-    <name>Sakai Hierarchy</name>
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
-    <artifactId>hierarchy</artifactId>
-
-    <packaging>pom</packaging>
-
-    <description>
-        Hierarchy is meant to provide a high performance basic hierarchy to associate data
-        with, no data is stored in the hierarchy itself, it is simply there to allow you
-        to maintain the hierarchical structure and to provide methods to manipulate it and
-        query it
-    </description>
-
-    <profiles>
-        <profile>
-            <id>full</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>api</module>
-                <module>impl</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>api</id>
-            <modules>
-                <module>api</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ddl</id>
-            <modules>
-                <module>impl/src/ddl</module>
-            </modules>
-        </profile>
-    </profiles>
-
-    <developers>
-        <developer>
-            <id>aaronz</id>
-            <name>Aaron Zeckoski</name>
-            <email>azeckoski@unicon.net</email>
-            <roles>
-                <role>Project Manager</role>
-                <role>Architect</role>
-                <role>Developer</role>
-            </roles>
-            <timezone>0</timezone>
-        </developer>
-    </developers>
-
-    <contributors>
-        <contributor>
-            <name>Anthony Whyte</name>
-            <email>arwhyte@umich.edu</email>
-        </contributor>
-    </contributors>
-
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                 <groupId>org.sakaiproject.hierarchy</groupId>
-                 <artifactId>hierarchy-api</artifactId>
-                 <version>${project.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                 <groupId>org.sakaiproject.hierarchy</groupId>
-                 <artifactId>hierarchy-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <version>24-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+

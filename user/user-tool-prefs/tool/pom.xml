@@ -1,22 +1,28 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>user</artifactId>
-    <groupId>org.sakaiproject.user</groupId>
+    <artifactId>access-base</artifactId>
+    <groupId>org.sakaiproject</groupId>
     <version>24-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-  <name>sakai-user-tool-prefs</name>
+  <name>sakai-access-impl</name>
   <groupId>org.sakaiproject</groupId>
-  <artifactId>sakai-user-tool-prefs</artifactId>
-  <packaging>war</packaging>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
       <artifactId>sakai-kernel-util</artifactId>
     </dependency>
-<!-- pull throught the JSF tool dependencies -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
       <artifactId>sakai-kernel-api</artifactId>
@@ -26,107 +32,34 @@
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.common</groupId>
-      <artifactId>sakai-privacy-api</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.myfaces.tomahawk</groupId>
-      <artifactId>tomahawk</artifactId>
-      <version>1.1.14</version>
-      <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <!-- pull through the JSF tool dependencies -->
-    <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-tool-sun</artifactId>
-      <type>pom</type>
-    </dependency>
-    <!-- the "classic" sakai widgets. Note: requires Sun RI JSF -->
-    <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-widgets-sun-depend</artifactId>
-      <type>pom</type>
-    </dependency>
-    <!-- this is required for any Sakai JSF tool -->
-    <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-tool</artifactId>
-    </dependency>
-    <!-- these (jsf-app and util-web) are options to get full Sakai integration -->
-    <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-app</artifactId>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
     </dependency>
     <dependency>
-        <groupId>org.sakaiproject.portal</groupId>
-        <artifactId>sakai-portal-util</artifactId>
-    </dependency>
-<!-- end Sakai integration dependencies -->
-    <dependency>
-      <groupId>commons-digester</groupId>
-      <artifactId>commons-digester</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
     <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>commons-beanutils</groupId>
-      <artifactId>commons-beanutils</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.weld.servlet</groupId>
-      <artifactId>weld-servlet-shaded</artifactId>
-      <version>${sakai.weld.shaded.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <version>${sakai.jakarta.jstl-api.version}</version>
-    </dependency>
-    <dependency>
-         <groupId>javax.servlet.jsp</groupId>
-         <artifactId>javax.servlet.jsp-api</artifactId>
-      </dependency>
-    <dependency>
-       <groupId>javax.servlet</groupId>
-       <artifactId>javax.servlet-api</artifactId>
-    </dependency>
-
-	<dependency>
-		<groupId>org.sakaiproject.entitybroker</groupId>
-		<artifactId>entitybroker-api</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.sakaiproject.entitybroker</groupId>
-		<artifactId>entitybroker-utils</artifactId>
-	</dependency>
-<!-- end Sun RI dependencies -->
-<!-- Spring dependency -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-	  <artifactId>spring-beans</artifactId>
-    </dependency>
-    <dependency>
-    	<groupId>org.apache.commons</groupId>
-    	<artifactId>commons-lang3</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
     </dependency>
   </dependencies>
   <build>
     <resources>
       <resource>
-        <directory>${basedir}/src/bundle</directory>
+        <directory>/src/bundle</directory>
         <includes>
           <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
         </includes>
       </resource>
     </resources>
@@ -135,3 +68,4 @@
  
  
  
+

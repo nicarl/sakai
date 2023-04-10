@@ -1,16 +1,19 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>citations-base</artifactId>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
     <version>24-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-  <name>savecite</name>
+  <name>sakai-access-impl</name>
   <groupId>org.sakaiproject</groupId>
-  <artifactId>sakai-citations-servlet</artifactId>
-  <packaging>war</packaging>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
@@ -29,42 +32,40 @@
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject</groupId>
-      <artifactId>sakai-citations-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject</groupId>
-      <artifactId>sakai-citations-util</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.sakaiproject.velocity</groupId>
       <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
     </dependency>
     <dependency>
       <groupId>org.sakaiproject.velocity</groupId>
       <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
   </dependencies>
   <build>
-    <finalName>savecite</finalName>
     <resources>
       <resource>
-        <directory>${basedir}/src/webapp</directory>
+        <directory>/src/bundle</directory>
         <includes>
           <include>**/*.properties</include>
         </includes>
       </resource>
       <resource>
-        <directory>${basedir}/src/java</directory>
+        <directory>/src/templates</directory>
         <includes>
-          <include>**/*.xml</include>
+          <include>**/*.vm</include>
         </includes>
       </resource>
     </resources>
-<!-- java source -->
-    <sourceDirectory>src/java</sourceDirectory>
   </build>
 </project>
  
  
  
+

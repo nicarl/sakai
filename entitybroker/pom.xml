@@ -1,121 +1,71 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
-    <artifactId>master</artifactId>
     <version>24-SNAPSHOT</version>
-    <relativePath>../master/pom.xml</relativePath>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
-
-  <name>Sakai Entity Broker</name>
+  <name>sakai-access-impl</name>
   <groupId>org.sakaiproject</groupId>
-  <artifactId>entitybroker</artifactId>
-  <packaging>pom</packaging>
-  <url>http://confluence.sakaiproject.org/confluence/x/F7M</url>
-  <description>The Sakai Entity Broker is an entity system for use in Sakai. Ideally we
-        want flexible entities which make development of integrated Sakai tools easier and
-        more flexible. Our goals are to make the entity system easier on developers
-        (easier to use and understand) and more powerful (easier to extend and improve).
-        The Entity Broker integrates seamlessly with the existing Entity system in Sakai
-        (Entity Producers and Entities) and entities created using entity providers are
-        accessible in Sakai as if they were created using the legacy system. Send feedback
-        or comments to Aaron Zeckoski (azeckoski@gmail.com, aaronz@vt.edu).
-  </description>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
   <properties>
-    <easymock.version>2.0</easymock.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <deploy.target />
   </properties>
-  <modules>
-    <module>api</module>
-    <module>impl</module>
-    <module>rest</module>
-    <module>tool</module>
-    <module>pack</module>
-    <module>mocks</module>
-    <module>utils</module>
-    <module>core-providers</module>
-  </modules>
-  <developers>
-    <developer>
-      <id>aaronz@vt.edu</id>
-      <name>Aaron Zeckoski</name>
-      <email>aaron@caret.cam.ac.uk</email>
-      <url>http://confluence.sakaiproject.org/confluence/display/~aaronz</url>
-      <organization>CARET</organization>
-      <organizationUrl>http://www.caret.cam.ac.uk/</organizationUrl>
-      <roles>
-        <role>Project Manager</role>
-        <role>Architect</role>
-        <role>Developer</role>
-      </roles>
-      <timezone>0</timezone>
-    </developer>
-    <developer>
-      <id>amb26</id>
-      <name>Antranig Basman</name>
-      <email>antranig@caret.cam.ac.uk</email>
-      <url>http://ponder.org.uk</url>
-      <organization>CARET</organization>
-      <organizationUrl>http://www.caret.cam.ac.uk/</organizationUrl>
-      <roles>
-        <role>Developer</role>
-      </roles>
-      <timezone>0</timezone>
-    </developer>
-  </developers>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.sakaiproject.entitybroker</groupId>
-        <artifactId>entitybroker-api</artifactId>
-        <version>${project.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.entitybroker</groupId>
-        <artifactId>entitybroker-impl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.entitybroker</groupId>
-        <artifactId>entitybroker-restimpl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.entitybroker</groupId>
-        <artifactId>entitybroker-mocks</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.entitybroker</groupId>
-        <artifactId>entitybroker-utils</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <!-- IMPL dependencies -->
-      <dependency>
-        <groupId>org.azeckoski</groupId>
-        <artifactId>reflectutils</artifactId>
-        <version>${reflectutils.version}</version>
-      </dependency>
-      <!-- testing -->
-      <dependency>
-        <groupId>org.mortbay.jetty</groupId>
-        <artifactId>jetty</artifactId>
-        <version>6.1.26</version>
-        <type>jar</type>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.mortbay.jetty</groupId>
-        <artifactId>jetty-servlet-tester</artifactId>
-        <version>6.1.26</version>
-        <type>jar</type>
-        <scope>test</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+

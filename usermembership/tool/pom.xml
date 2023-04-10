@@ -1,21 +1,19 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>usermembership-base</artifactId>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
     <version>24-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
-
-  <name>sakai-usermembership-tool</name>
+  <name>sakai-access-impl</name>
   <groupId>org.sakaiproject</groupId>
-  <artifactId>sakai-usermembership-tool</artifactId>
-  <description>
-    This project creates a WAR containing the usermembership Tool for Sakai.
-  </description>
-  <packaging>war</packaging>
-
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
@@ -26,10 +24,6 @@
       <artifactId>javax.servlet-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
       <artifactId>sakai-kernel-api</artifactId>
     </dependency>
@@ -38,73 +32,40 @@
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject</groupId>
-      <artifactId>sakai-usermembership-api</artifactId>
-    </dependency>
-<!-- Sakai Project dependencies (Web/JSF related) -->
-    <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-tool</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-app</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.faces</groupId>
-          <artifactId>jsf-api</artifactId>
-        </exclusion>
-      </exclusions>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-widgets-sun-depend</artifactId>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.jsf2</groupId>
-      <artifactId>jsf2-spreadsheet</artifactId>
-    </dependency>
-    <!-- Apache Commons -->
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
     </dependency>
-    <dependency>
-      <groupId>commons-digester</groupId>
-      <artifactId>commons-digester</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>commons-beanutils</groupId>
-      <artifactId>commons-beanutils</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.weld.servlet</groupId>
-      <artifactId>weld-servlet-shaded</artifactId>
-      <version>${sakai.weld.shaded.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <version>${sakai.jakarta.jstl-api.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.myfaces.tomahawk</groupId>
-      <artifactId>tomahawk21</artifactId>
-      <version>1.1.14</version>
-      <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
   </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+

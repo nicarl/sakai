@@ -1,16 +1,19 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>textarea-base</artifactId>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
     <version>24-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-  <name>sakai-fck-connector</name>
+  <name>sakai-access-impl</name>
   <groupId>org.sakaiproject</groupId>
-  <artifactId>sakai-fck-connector</artifactId>
-  <packaging>war</packaging>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
@@ -29,60 +32,40 @@
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
     <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
     </dependency>
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
     </dependency>
     <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
     <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>javax.servlet.jsp-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.entitybroker</groupId>
-      <artifactId>entitybroker-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jdom</groupId>
-      <artifactId>jdom</artifactId>
-      <version>1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.msgcntr</groupId>
-      <artifactId>messageforums-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.samigo</groupId>
-      <artifactId>samigo-services</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.samigo</groupId>
-      <artifactId>samigo-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.assignment</groupId>
-      <artifactId>sakai-assignment-api</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
     </dependency>
   </dependencies>
   <build>
-      <resources>
-          <resource>
-              <directory>${basedir}/src/bundle</directory>
-              <includes>
-                  <include>**/*.properties</include>
-              </includes>
-          </resource>
-      </resources>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
 </project>
  
  
  
+

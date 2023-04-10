@@ -1,74 +1,71 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.sakaiproject</groupId>
-        <artifactId>master</artifactId>
-        <version>24-SNAPSHOT</version>
-        <relativePath>../master/pom.xml</relativePath>
-    </parent>
-	<name>Sakai Config Project</name>
-	<groupId>org.sakaiproject</groupId>
-	<artifactId>config</artifactId>
-	<packaging>pom</packaging>
-	<description>The Config project is home to Sakai configuration and localization files.  Config includes 
-	several versions of sakai.properties, a text file containing a series of key/value pairs 
-	that provide a convenient mechanism for defining a variety of configuration options for 
-	Sakai tools, services, supporting database and UI-related text such as copyright statement, 
-	institutional name, server name, etc.  Settings in sakai.properties are read on startup; thus 
-	changes to sakai.properties only take effect after you restart Sakai's servlet 
-	container (typically Apache Tomcat).</description>
-	<developers>
-        <developer>
-            <id>arwhyte</id>
-            <name>Anthony Whyte</name>
-            <email>arwhyte@sakaifoundation.org</email>
-            <url>http://confluence.sakaiproject.org/confluence/display/~arwhyte</url>
-            <organization>Sakai Foundation</organization>
-            <organizationUrl>https://www.sakailms.org/</organizationUrl>
-            <roles>    
-                <role>Developer</role>
-            </roles>
-            <timezone>-5</timezone>
-        </developer>
-    </developers>
-	<modules>
-		<module>configuration/bundles</module>
-		<module>localization/bundles</module>
-		<module>sharedI18n/bundles</module>
-	</modules>
-	<build>
-	    <pluginManagement>
-	        <plugins>
-	            <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-	            <plugin>
-	                <groupId>org.eclipse.m2e</groupId>
-	                <artifactId>lifecycle-mapping</artifactId>
-	                <version>1.0.0</version>
-	                <configuration>
-	                    <lifecycleMappingMetadata>
-	                        <pluginExecutions>
-	                            <pluginExecution>
-	                                <pluginExecutionFilter>
-	                                    <groupId>org.apache.maven.plugins</groupId>
-	                                    <artifactId>maven-antrun-plugin</artifactId>
-	                                    <versionRange>[1.6,)</versionRange>
-	                                    <goals>
-	                                        <goal>run</goal>
-	                                    </goals>
-	                                </pluginExecutionFilter>
-	                                <action>
-	                                    <ignore></ignore>
-	                                </action>
-	                            </pluginExecution>
-	                        </pluginExecutions>
-	                    </lifecycleMappingMetadata>
-	                </configuration>
-	            </plugin>
-	        </plugins>
-	    </pluginManagement>
-	</build>
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>access-base</artifactId>
+    <groupId>org.sakaiproject</groupId>
+    <version>24-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+

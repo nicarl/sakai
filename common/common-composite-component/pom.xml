@@ -1,35 +1,27 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>common</artifactId>
-    <groupId>org.sakaiproject.common</groupId>
-    <version>24-SNAPSHOT</version><!-- ProjectVersion -->
-    <relativePath>../pom.xml</relativePath>
+    <artifactId>access-base</artifactId>
+    <groupId>org.sakaiproject</groupId>
+    <version>24-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
-  <name>Sakai Common API Composite Component</name>
-  <groupId>org.sakaiproject.common</groupId>
-  <artifactId>sakai-common-composite-component</artifactId>
-  <packaging>sakai-component</packaging>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
   <properties>
-    <deploy.target>components</deploy.target>
+    <deploy.target />
   </properties>
   <dependencies>
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
@@ -39,46 +31,41 @@
       <groupId>org.sakaiproject.kernel</groupId>
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
-<!--  compile time dependencies -->
     <dependency>
-      <groupId>org.sakaiproject.common</groupId>
-      <artifactId>sakai-common-api</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.common</groupId>
-      <artifactId>sakai-common-composite-component-data</artifactId>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.profile2</groupId>
-      <artifactId>profile2-api</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.search</groupId>
-      <artifactId>search-api</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
     </dependency>
-    <dependency>
-      <groupId>commons-beanutils</groupId>
-      <artifactId>commons-beanutils</artifactId>
-    </dependency>
-    <dependency>
-       <groupId>org.apache.commons</groupId>
-       <artifactId>commons-lang3</artifactId>
-       <scope>provided</scope>
-    </dependency> 
   </dependencies>
   <build>
     <resources>
       <resource>
-        <directory>src/java</directory>
+        <directory>/src/bundle</directory>
         <includes>
           <include>**/*.properties</include>
-          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
         </includes>
       </resource>
     </resources>
-<!-- java source -->
   </build>
 </project>
  
  
  
+

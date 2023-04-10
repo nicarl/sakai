@@ -1,129 +1,71 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
-    <artifactId>master</artifactId>
     <version>24-SNAPSHOT</version>
-    <relativePath>../master/pom.xml</relativePath>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
-
-  <name>Sakai Common Project</name>
-  <groupId>org.sakaiproject.common</groupId>
-  <artifactId>common</artifactId>
-  <packaging>pom</packaging>
-
-  <modules>
-    <module>common-composite-component</module>
-    <module>impl</module>
-    <module>common-api</module>
-    <module>privacy-api</module>
-    <module>privacy-comp-impl</module>
-    <module>privacy-hbm</module>
-    <!-- module>privacy-integration-test</module -->
-    <!-- archive and import -->
-    <module>archive-api</module>
-    <module>archive-impl/impl2</module>
-    <module>import-impl</module>
-    <module>import-pack</module>
-    <module>import-handlers/content-handlers</module>
-    <module>import-util</module>
-    <module>import-parsers/common-cartridge</module>
-    <module>import-parsers/sakai-archive</module>
-    <module>import-parsers/blackboard_5-5</module>
-    <module>import-parsers/blackboard_6/api</module>
-    <module>import-parsers/blackboard_6/impl</module>
-  </modules>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>sakai-common-composite-component</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>sakai-common-api</artifactId>
-        <version>${project.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>sakai-common-composite-component-data</artifactId>
-        <version>${project.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>sakai-privacy-hbm</artifactId>
-        <version>${project.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>sakai-privacy-api</artifactId>
-        <version>${project.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>sakai-privacy-impl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>archive-api</artifactId>
-        <version>${project.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>archive-impl2</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>import-impl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>sakai-import-content</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-        <artifactId>common-cartridge</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-	<artifactId>sakai-import-bb55</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-	<artifactId>sakai-import-bb6</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-	<groupId>org.sakaiproject.samigo</groupId>
-	<artifactId>samigo-import</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-	<groupId>org.sakaiproject</groupId>
-	<artifactId>sakai-import-announcement</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.common</groupId>
-	<artifactId>sakai-archive-import</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+

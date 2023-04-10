@@ -1,16 +1,19 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>login</artifactId>
-    <groupId>org.sakaiproject.login</groupId>
+    <artifactId>access-base</artifactId>
+    <groupId>org.sakaiproject</groupId>
     <version>24-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-  <name>sakai-login-tool</name>
-  <groupId>org.sakaiproject.login</groupId>
-  <artifactId>sakai-login-tool</artifactId>
-  <packaging>war</packaging>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
@@ -29,124 +32,40 @@
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.login</groupId>
-      <artifactId>login-api</artifactId>
-      <scope>provided</scope>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
     </dependency>
     <dependency>
-    	<groupId>org.apache.commons</groupId>
-    	<artifactId>commons-lang3</artifactId>
-    	<type>jar</type>
-    	<scope>provided</scope>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
     </dependency>
     <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-text</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
     <dependency>
-        <groupId>com.google.code.findbugs</groupId>
-        <artifactId>annotations</artifactId>
-        <version>1.3.9</version>
-        <!-- Not really provided, but easier than creating a custom assembly 
-             as the findbugs annotations aren't needed at runtime. -->
-        <scope>provided</scope>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <scope>test</scope>
-    </dependency>
-	<dependency>
-	    <groupId>org.springframework.security.extensions</groupId>
-	    <artifactId>spring-security-saml2-core</artifactId>
-	    <version>1.0.10.RELEASE</version>
-        <exclusions>
-            <exclusion>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-            </exclusion>
-            <exclusion>
-                <groupId>xalan</groupId>
-                <artifactId>xalan</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
-      <dependency>
-          <groupId>org.jasig.cas.client</groupId>
-          <artifactId>cas-client-core</artifactId>
-          <version>3.6.2</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-beans</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-webmvc</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-core</artifactId>
-          <version>${sakai.spring.security.version}</version>
-          <exclusions>
-              <exclusion>
-                  <groupId>org.springframework</groupId>
-                  <artifactId>spring-aop</artifactId>
-              </exclusion>
-              <exclusion>
-                  <groupId>org.springframework</groupId>
-                  <artifactId>spring-beans</artifactId>
-              </exclusion>
-              <exclusion>
-                  <groupId>org.springframework</groupId>
-                  <artifactId>spring-context</artifactId>
-              </exclusion>
-              <exclusion>
-                  <groupId>org.springframework</groupId>
-                  <artifactId>spring-core</artifactId>
-              </exclusion>
-              <exclusion>
-                  <groupId>org.springframework</groupId>
-                  <artifactId>spring-support</artifactId>
-              </exclusion>
-          </exclusions>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-config</artifactId>
-          <version>${sakai.spring.security.version}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-web</artifactId>
-          <version>${sakai.spring.security.version}</version>
-      </dependency>
-      <dependency>
-	      <groupId>aopalliance</groupId>
-	      <artifactId>aopalliance</artifactId>
-	      <version>1.0</version>
-	      <scope>provided</scope>
-      </dependency>
-
   </dependencies>
   <build>
     <resources>
       <resource>
-        <directory>${basedir}/src/bundle</directory>
+        <directory>/src/bundle</directory>
         <includes>
           <include>**/*.properties</include>
         </includes>
       </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
     </resources>
   </build>
-  <properties>
-  	<maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
-  </properties>
 </project>
  
  
  
+

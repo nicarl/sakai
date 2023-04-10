@@ -1,146 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
-    <artifactId>master</artifactId>
     <version>24-SNAPSHOT</version>
-    <relativePath>../master/pom.xml</relativePath>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
-
-  <name>Sakai SiteStats</name>
-  <groupId>org.sakaiproject.sitestats</groupId>
-  <artifactId>sitestats</artifactId>
-  <description>SiteStats is a tool for Sakai for showing site usage statistics.</description>
-  <url>http://confluence.sakaiproject.org/confluence/display/STAT</url>
-  <packaging>pom</packaging>
-
-  <!-- Project versions -->
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
   <properties>
-    <commons-betwixt.version>0.8</commons-betwixt.version>
-    <fop.version>1.0</fop.version>
-    <jfreechart.version>1.5.3</jfreechart.version>
-    <sst.wicket.version>6.30.0</sst.wicket.version>
+    <deploy.target />
   </properties>
-
-  <!-- Project modules -->
-  <modules>
-    <module>sitestats-api</module>
-    <module>sitestats-bundle</module>
-    <module>sitestats-impl</module>
-    <module>sitestats-impl-hib</module>
-    <module>sitestats-tool</module>
-  </modules>
-
-  <!-- Project related dependencies -->
-  <dependencyManagement>
-    <dependencies>
-      <!-- SiteStats -->
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>sitestats-api</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>sitestats-bundle</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>sitestats-impl</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>sitestats-impl-hib</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-        <scope>provided</scope>
-      </dependency>
-      <!-- Apache Commons -->
-      <dependency>
-        <groupId>commons-betwixt</groupId>
-        <artifactId>commons-betwixt</artifactId>
-        <version>${commons-betwixt.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <!-- Apache others -->
-      <dependency>
-        <groupId>org.apache.xmlgraphics</groupId>
-        <artifactId>fop</artifactId>
-        <version>${fop.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>xalan</groupId>
-            <artifactId>xalan</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi</artifactId>
-        <version>${sakai.poi.version}</version>
-      </dependency>
-      <!-- Apache Wicket -->
-      <dependency>
-        <groupId>org.apache.wicket</groupId>
-        <artifactId>wicket</artifactId>
-        <version>${sst.wicket.version}</version>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.wicket</groupId>
-        <artifactId>wicket-extensions</artifactId>
-        <version>${sst.wicket.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.wicket</groupId>
-        <artifactId>wicket-ioc</artifactId>
-        <version>${sst.wicket.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.wicket</groupId>
-        <artifactId>wicket-spring</artifactId>
-        <version>${sst.wicket.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.wicket</groupId>
-        <artifactId>wicket-spring-annot</artifactId>
-        <version>${sst.wicket.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.wicket</groupId>
-        <artifactId>wicket-datetime</artifactId>
-        <version>${sst.wicket.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.wicket</groupId>
-        <artifactId>wicket-devutils</artifactId>
-        <version>${sst.wicket.version}</version>
-      </dependency>
-      <!-- JFreeChart -->
-      <dependency>
-        <groupId>org.jfree</groupId>
-        <artifactId>jfreechart</artifactId>
-        <version>${jfreechart.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+

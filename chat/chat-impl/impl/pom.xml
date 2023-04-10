@@ -1,21 +1,19 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>chat-base</artifactId>
+    <artifactId>access-base</artifactId>
     <groupId>org.sakaiproject</groupId>
     <version>24-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-
-  <name>sakai-chat-impl</name>
+  <name>sakai-access-impl</name>
   <groupId>org.sakaiproject</groupId>
-  <artifactId>sakai-chat-impl</artifactId>
-  <packaging>sakai-component</packaging>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
   <properties>
-    <deploy.target>components</deploy.target>
+    <deploy.target />
   </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
@@ -26,22 +24,6 @@
       <artifactId>javax.servlet-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
       <artifactId>sakai-kernel-api</artifactId>
     </dependency>
@@ -50,32 +32,16 @@
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject</groupId>
-      <artifactId>sakai-chat-api</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.message</groupId>
-      <artifactId>sakai-message-api</artifactId>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.search</groupId>
-      <artifactId>search-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.sakaiproject.entitybroker</groupId>
-      <artifactId>entitybroker-api</artifactId>
-    </dependency>
-    <dependency>
-     <groupId>org.sakaiproject.presence</groupId>
-     <artifactId>sakai-presence-api</artifactId>
-   </dependency>
-    <dependency>
-        <groupId>org.jgroups</groupId>
-        <artifactId>jgroups</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -85,21 +51,15 @@
   <build>
     <resources>
       <resource>
-        <directory>${basedir}/src/sql</directory>
-        <includes>
-          <include>**/*.sql</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>${basedir}/src/bundle</directory>
+        <directory>/src/bundle</directory>
         <includes>
           <include>**/*.properties</include>
         </includes>
       </resource>
       <resource>
-        <directory>${basedir}/conf</directory>
+        <directory>/src/templates</directory>
         <includes>
-          <include>**/*.xml</include>
+          <include>**/*.vm</include>
         </includes>
       </resource>
     </resources>
@@ -108,3 +68,4 @@
  
  
  
+

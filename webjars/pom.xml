@@ -1,50 +1,71 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.sakaiproject</groupId>
-        <artifactId>master</artifactId>
-        <version>24-SNAPSHOT</version>
-        <relativePath>../master/pom.xml</relativePath>
-    </parent>
-    <name>Sakai WebJars Project</name>
-    <groupId>org.sakaiproject.webjars</groupId>
-    <artifactId>webjars</artifactId>
-    <packaging>pom</packaging>
-
-    <!-- This project contains ckeditor addons that are currently not released as webjars,
-         when the webjar is released by the upstream project we can remove -->
-    <profiles>
-        <profile>
-            <!-- This profile contains addons we can redistribute and release -->
-            <id>ckeditor-addons</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>ckeditor-addons</name>
-                </property>
-            </activation>
-            <modules>
-            </modules>
-        </profile>
-        <profile>
-            <!-- This profile contains addons where the licensing is incompatible and they can't be distributed -->
-            <id>ckeditor-extras</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>ckeditor-extras</name>
-                </property>
-            </activation>
-            <modules>
-                <module>ckeditor-balloonpanel</module>
-                <module>ckeditor-a11ychecker</module>
-            </modules>
-        </profile>
-    </profiles>
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>access-base</artifactId>
+    <groupId>org.sakaiproject</groupId>
+    <version>24-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+

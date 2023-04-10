@@ -1,20 +1,28 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>content</artifactId>
-    <groupId>org.sakaiproject.content</groupId>
+    <artifactId>access-base</artifactId>
+    <groupId>org.sakaiproject</groupId>
     <version>24-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-  <name>content-providers-impl</name>
-  <groupId>org.sakaiproject.content</groupId>
-  <artifactId>content-providers-impl</artifactId>
-  <packaging>sakai-component</packaging>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
   <properties>
-    <deploy.target>components</deploy.target>
+    <deploy.target />
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.sakaiproject.kernel</groupId>
       <artifactId>sakai-kernel-api</artifactId>
@@ -24,12 +32,16 @@
       <artifactId>sakai-component-manager</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.edu-services.course-management</groupId>
-      <artifactId>coursemanagement-api</artifactId>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.sakaiproject.scheduler</groupId>
-      <artifactId>scheduler-api</artifactId>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -39,22 +51,15 @@
   <build>
     <resources>
       <resource>
-        <directory>${basedir}/src/sql</directory>
+        <directory>/src/bundle</directory>
         <includes>
-          <include>**/*.sql</include>
+          <include>**/*.properties</include>
         </includes>
       </resource>
       <resource>
-        <directory>${basedir}/src/config</directory>
+        <directory>/src/templates</directory>
         <includes>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>${basedir}/src/bundle</directory>
-        <includes>
-          <include>**/*.properties</include>
+          <include>**/*.vm</include>
         </includes>
       </resource>
     </resources>
@@ -63,3 +68,4 @@
  
  
  
+

@@ -1,90 +1,71 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version=1.0?>
+<project xmlns=http://maven.apache.org/POM/4.0.0 xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd>
   <modelVersion>4.0.0</modelVersion>
-    <parent>
-      <groupId>org.sakaiproject</groupId>
-      <artifactId>master</artifactId>
-      <version>24-SNAPSHOT</version>
-      <relativePath>../master/pom.xml</relativePath>
-    </parent>
-
-  <name>Sakai Content Project</name>
-  <groupId>org.sakaiproject.content</groupId>
-  <artifactId>content</artifactId>
-  <packaging>pom</packaging>
-
-  <profiles>
-    <profile>
-      <id>framework</id>
-      <modules>
-        <module>content-tool/tool</module>
-	<module>content-bundles</module>
-      </modules>
-    </profile>
-    <profile>
-      <id>metadata</id>
-      <modules>
-        <module>content-metadata/api</module>
-        <module>content-metadata/impl</module>
-      </modules>
-    </profile>
-    <profile>
-      <id>full</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <modules>
-        <module>content-cleanup</module>
-        <module>content-copyright/api</module>
-        <module>content-copyright/impl</module>
-        <module>content-impl-providers/impl</module>
-        <module>content-metadata/api</module>
-        <module>content-metadata/impl</module>
-        <module>content-tool/tool</module>
-        <module>content-bundles</module>
-        <module>content-types</module>
-      </modules>
-    </profile>
-  </profiles>
-
-
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-  	<groupId>org.sakaiproject.content</groupId>
-  	<artifactId>content-copyright-api</artifactId>
-	<version>${project.version}</version>
-    <scope>provided</scope>
-	</dependency>
-	<dependency>
-        <groupId>org.sakaiproject.content</groupId>
-        <artifactId>content-bundles</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.content</groupId>
-        <artifactId>content-providers-impl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.content</groupId>
-        <artifactId>content-metadata-api</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject.content</groupId>
-        <artifactId>content-metadata-impl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.sakaiproject</groupId>
-        <artifactId>sakai-velocity-tool</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <parent>
+    <artifactId>access-base</artifactId>
+    <groupId>org.sakaiproject</groupId>
+    <version>24-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+  <name>sakai-access-impl</name>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>sakai-access-impl</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+    <deploy.target />
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.velocity</groupId>
+      <artifactId>sakai-velocity-tool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>/src/bundle</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/src/templates</directory>
+        <includes>
+          <include>**/*.vm</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
  
  
  
+
